@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+
+{% block cuerpo %}
+{% load static %}
+<div class="row"><!-- la fila -->
+<div class="col-sm-12 col-md-4 col-lg-4 col-xl-4"><!-- columna izquierda -->
+
+<h1>registrar</h1>
+    <div class="card">
+        <div class="card-body">
+            <form action="registrarventa/" method="POST">{% csrf_token %}  <!--falta accion-->
+                <div class="form-group">
+                    <input type="text" id="txtcod" name="txtcod" class="form-control" placeholder="codigo venta" minlenght="6" maxLenght="6" required>
+                </div>
+                <div class="form-group py-3">
+                    <input type="text" id="numcliente" name="numcliente"class="form-control" placeholder="codigo cliente"   maxLenght="100" required>
+                </div>
+                <div class="form-group py-3">
+                    <input type="text" id="numemp" name="numemp"class="form-control" placeholder="codigo empleado"   maxLenght="100" required>
+                </div>
+                <div class="form-group py-3">
+                    <input type="text" id="numprodu" name="numprodu" class="form-control" placeholder="codigo producto"   maxLenght="100" required>
+                </div>
+                <div class="form-group py-3">
+                    <input type="text" id="numfact" name="numfact" class="form-control" placeholder="factura"   maxLenght="100" required>
+                </div>
+                <div class="form-group py-3">
+                    <input type="text" id="numdesc" name="numdesc" class="form-control" placeholder="descuento"   maxLenght="100" required>
+                </div>
+                <div class="form-group py-3">
+                    <label for="numfecha">Fecha</label>
+                    <input type="date" id="numfecha" name="numfecha" class="form-control"  required>
+                </div>
+                <div class="form-group py-3">
+                    <input type="text" id="numpago" name="numpago" class="form-control" placeholder="pago"   maxLenght="100" required>
+                </div>
+                <div class="form-group py-3">
+                    <input type="text" id="numiva" name="numiva" class="form-control" placeholder="IVA"   maxLenght="100" required>
+                </div>
+                <div class="form-group py-2">
+                    <button type="submit" class="btn btn-primary">guardar</button>
+                </div>
+            </form>
+        
+        </div>
+    </div><!--la tarjeta-->
+
+</div><!-- columna izquierda --> 
+
+<div class="col-sm-12 col-md-8 col-lg-8 col-xl-8"><!--columna derecha-->
+    <h1> 
+        listado de ventas
+    </h1>
+    <img class="w-50" src="{% static 'img/ventas.jpg' %}" alt="lole" weight="200" height="200">
+    <!--  la tabla   -->
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">codigo venta</th>
+                <th scope="col">codigo cliente</th>
+                <th scope="col">codigo empleado</th>
+                <th scope="col">codigo producto</th>
+                <th scope="col">factura</th>
+                <th scope="col">descuento</th>
+                <th scope="col">fecha venta</th>
+                <th scope="col">pago</th>
+                <th scope="col">iva</th>
+                <th>opciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for l in lasventas %}
+            <tr>
+                <td>
+                {{forloop.counter}}</td>
+                <td>{{l.codigo}}  </td>
+                <td>{{l.id_cliente}}  </td>
+                <td>{{l.id_empleado}}  </td>
+                <td>{{l.id_producto}}  </td>
+                <td>{{l.factura}}  </td>
+                <td>{{l.descuento}}</td>
+                <td>{{l.fecha_venta|date:"d/m/Y"}}  </td>
+                <td>{{l.pago}}  </td>
+                <td>{{l.iva}}  </td>
+                <td><a href="seleccionarventa/{{l.codigo}}" class="btn btn-info">editar</a></td><!--falta codigo-->
+                <td><a href="borrarventa/{{l.codigo}}" class="btn btn-danger">borrar</a></td>
+            </tr>
+            
+            {% endfor %}
+            </tbody>
+        </table>
+        <!--  la tabla   -->
+    <div><!--columna derecha-->
+    </div><!-- la fila -->
+{% endblock %}
