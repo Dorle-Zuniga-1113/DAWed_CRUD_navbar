@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block cuerpo  %}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+<h2>Editar venta</h2>
+<!--aquí codigo tarjeta-->
+<!--editassssss-->
+<div class="card">
+    <div class="card-body">
+        <form action="/editarventa/" method="POST">{% csrf_token %}  <!--falta accion-->
+            <div class="form-group">
+                <input type="text" id="txtcod" name="txtcod" class="form-control" value="{{lasventas.id_venta}}" placeholder="codigo Producto" minlenght="6" maxLenght="6" required>
+            </div>
+            <div class="form-group py-3">
+                <input type="text" id="numcliente" name="numcliente"class="form-control" value="{{lasventas.id_cliente}}" placeholder="codigo cliente"   maxLenght="100" required>
+            </div>
+            <div class="form-group py-3">
+                <input type="text" id="numemp" name="numemp"class="form-control" value="{{lasventas.id_empleado}}" placeholder="codigo empleado"   maxLenght="100" required>
+            </div>
+            <div class="form-group py-3">
+                <input type="text" id="numprodu" name="numprodu" class="form-control" value="{{lasventas.id_producto}}" placeholder="codigo producto"   maxLenght="100" required>
+            </div>
+            <div class="form-group py-3">
+                <input type="text" id="numfact" name="numfact" class="form-control" value="{{lasventas.factura}}" placeholder="factura"   maxLenght="100" required>
+            </div>
+            <div class="form-group py-3">
+                <input type="text" id="numdesc" name="numdesc" class="form-control" value="{{lasventas.descuento}}" placeholder="descuento"   maxLenght="100" required>
+            </div>
+            <div class="form-group py-3">
+                <label for="numfecha">Fecha</label>
+                <input type="date" id="numfecha" name="numfecha" class="form-control" value="{{lasventas.fecha_venta}}"  required>
+            </div>
+            <div class="form-group py-3">
+                <input type="text" id="numpago" name="numpago" class="form-control" value="{{lasventas.pago}}" placeholder="pago"   maxLenght="100" required>
+            </div>
+            <div class="form-group py-3">
+                <input type="text" id="numiva" name="numiva" class="form-control" value="{{lasventas.iva}}" placeholder="IVA"   maxLenght="100" required>
+            </div>
+            <div class="form-group py-2">
+                <button type="submit" class="btn btn-primary">guardar</button>
+            </div>
+        </form>
+    
+    </div>
+</div><!--la tarjeta-->
+<!--aquí codigo tarjeta-->
+    </div>
+</div>
+
+
+{% endblock  %}

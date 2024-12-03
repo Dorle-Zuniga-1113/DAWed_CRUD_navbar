@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block cuerpo  %}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+<h2>Editar producto</h2>
+<!--aquí codigo tarjeta-->
+<!--editassssss-->
+<div class="card">
+    <div class="card-body">
+        <form action="/editarproducto/" method="POST">{% csrf_token %}  <!--falta accion-->
+            <div class="form-group">
+                <input type="text" id="txtcod" name="txtcod" class="form-control" placeholder="codigo Producto" value="{{losprodu.id_producto}}" minlenght="6" maxLenght="6" required>
+            </div>
+            <div class="form-group py-3">
+                <input type="text" id="txtnombre" name="txtnombre"class="form-control" placeholder="nombre" value="{{losprodu.nombre}}"  maxLenght="100" required>
+            </div>
+            <div class="form-group py-3">
+                <input type="text" id="txtingre" name="txtingre"class="form-control" placeholder="ingredientes" value="{{losprodu.ingredientes}}"   maxLenght="100" required>
+            </div>
+            <div class="form-group py-3">
+                <input type="text" id="txtinstru" name="txtinstru" class="form-control" placeholder="instrucciones" value="{{losprodu.instrucciones}}"  maxLenght="100" required>
+            </div>
+            <div class="form-group py-3">
+                <input type="text" id="numcosto" name="numcosto" class="form-control" placeholder="costo" value="{{losprodu.costo}}"  maxLenght="100" required>
+            </div>
+            <div class="form-group py-3">
+                <input type="text" id="txtdescri" name="txtdescri" class="form-control" placeholder="descripcion" value="{{losprodu.descripcion}}"  maxLenght="100" required>
+            </div>
+            <div class="form-group py-3">
+                <input type="date" id="numcadu" name="numcadu" class="form-control"  value="{{losprodu.caducidad}}"   required>
+            </div>
+            <div class="form-group py-3">
+                <input type="text" id="txtprov" name="txtprov" class="form-control" placeholder=" ID proveedor" value="{{losprodu.id_proveedor}}"  maxLenght="100" required>
+            </div>
+            <div class="form-group py-2">
+                <button type="submit" class="btn btn-primary">guardar productos</button>
+            </div>
+        </form>
+    
+    </div>
+</div><!--la tarjeta-->
+<!--aquí codigo tarjeta-->
+    </div>
+</div>
+
+
+{% endblock  %}
