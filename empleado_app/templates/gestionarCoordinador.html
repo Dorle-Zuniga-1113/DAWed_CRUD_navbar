@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+
+{% block cuerpo %}
+{% load static %}
+<div class="row"><!-- la fila -->
+<div class="col-sm-12 col-md-4 col-lg-4 col-xl-4"><!-- columna izquierda -->
+
+<h1>registrar</h1>
+    <div class="card">
+        <div class="card-body">
+            <form action="registrarCoordi/" method="POST">{% csrf_token %}  <!--falta accion-->
+                <div class="form-group">
+                    <input type="text" id="txtcod" name="txtcod" class="form-control"  placeholder="codigo empleado" minlenght="6" maxLenght="6" required>
+                </div>
+                <div class="form-group py-3">
+                    <input type="text" id="txtnombre" name="txtnombre"class="form-control"  placeholder="nombre empleado"   maxLenght="100" required>
+                </div>
+                <div class="form-group py-3">
+                    <input type="text" id="numnumero" name="numnumero"class="form-control"  placeholder="numero empleado"   maxLenght="100" required>
+                </div>
+                <div class="form-group py-3">
+                    <input type="text" id="txtpuesto" name="txtpuesto"class="form-control"  placeholder="puesto"   maxLenght="100" required>
+                </div>
+                <div class="form-group py-3">
+                    <input type="text" id="txtdire" name="txtdire" class="form-control"  placeholder="direccion"   maxLenght="100" required>
+                </div>
+                <div class="form-group py-3">
+                    <input type="text" id="txtemail" name="txtemail" class="form-control" placeholder="email"   maxLenght="100" required>
+                </div>
+                <div class="form-group py-3">
+                    <input type="text" id="numsueldo" name="numsueldo" class="form-control"  placeholder="saldo"   maxLenght="100" required>
+                </div>
+                <div class="form-group py-3">
+                    <label for="numfecha">Fecha de ingreso</label>
+                    <input type="date" id="numfecha" name="numfecha" class="form-control" value="{{loscoordis.fecha_ing}}" required>
+                </div>
+                
+                
+                <div class="form-group py-2">
+                    <button type="submit" class="btn btn-primary">guardar</button>
+                </div>
+            </form>
+        
+        </div>
+    </div><!--la tarjeta-->
+
+</div><!-- columna izquierda --> 
+
+<div class="col-sm-12 col-md-8 col-lg-8 col-xl-8"><!--columna derecha-->
+    <h1> 
+        listado de Empleados
+    </h1>
+    <img class="w-50" src="{% static 'img/empleado.jpg' %}" alt="lole" weight="200" height="200">
+
+    <!--  la tabla   -->
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">codigo</th>
+                <th scope="col">nombre</th>
+                <th scope="col">numero</th>
+                <th scope="col">puesto</th>
+                <th scope="col">direccion</th>
+                <th scope="col">email</th>
+                <th scope="col">sueldo</th>
+                <th scope="col">fecha de ingreso</th>
+
+                <th>opciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for m in loscoordis %}
+            <tr>
+                <td>
+                {{forloop.counter}}</td>
+                <td>{{m.codigo}}  </td>
+                <td>{{m.nombre}}  </td>
+                <td>{{m.numero}}  </td>
+                <td>{{m.puesto}}  </td>
+                <td>{{m.direccion}}  </td>
+                <td>{{m.email}}  </td>
+                <td>{{m.sueldo}}  </td>
+                <td>{{m.fecha_ing|date:"d/m/Y"}}</td>
+                <td><a href="SeleccionarCoordi/{{m.codigo}}" class="btn btn-info">editar</a></td><!--falta codigo-->
+                <td><a href="BorrarCoordi/{{m.codigo}}" class="btn btn-danger">borrar</a></td>
+            </tr>
+            
+            {% endfor %}
+            </tbody>
+        </table>
+        <!--  la tabla   -->
+    <div><!--columna derecha-->
+    </div><!-- la fila -->
+{% endblock %}

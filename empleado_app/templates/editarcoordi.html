@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block cuerpo  %}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+<h2>Editar empleado</h2>
+<!--aquí codigo tarjeta-->
+<div class="card">
+    <div class="card-body">
+        <form action="/editarCoordi/" method="POST">{% csrf_token %}  <!--falta accion-->
+            <div class="form-group">
+                <input type="text" id="txtcod" name="txtcod" class="form-control" value="{{loscoordis.codigo}}" placeholder="codigo coordinador" minlenght="6" maxLenght="6" required>
+            </div>
+            <div class="form-group py-3">
+                <input type="text" id="txtnombre" name="txtnombre"class="form-control" value="{{loscoordis.nombre}}" placeholder="nombre empleado"   maxLenght="100" required>
+            </div>
+            <div class="form-group py-3">
+                <input type="text" id="numnumero" name="numnumero"class="form-control" value="{{loscoordis.numero}}" placeholder="numero empleado"   maxLenght="100" required>
+            </div>
+            <div class="form-group py-3">
+                <input type="text" id="txtpuesto" name="txtpuesto"class="form-control" value="{{loscoordis.puesto}}" placeholder="puesto"   maxLenght="100" required>
+            </div>
+            <div class="form-group py-3">
+                <input type="text" id="txtdire" name="txtdire" class="form-control" value="{{loscoordis.direccion}}" placeholder="direccion"   maxLenght="100" required>
+            </div>
+            <div class="form-group py-3">
+                <input type="text" id="txtemail" name="txtemail" class="form-control"value="{{loscoordis.email}}" placeholder="email"   maxLenght="100" required>
+            </div>
+            <div class="form-group py-3">
+                <input type="text" id="numsueldo" name="numsueldo" class="form-control" value="{{loscoordis.sueldo}}" placeholder="saldo"   maxLenght="100" required>
+            </div>
+            <div class="form-group py-3">
+                <input type="date" id="numfecha" name="numfecha" class="form-control" value="{{loscoordis.fecha_ing}}" required>
+            </div>
+            
+            <div class="form-group py-2">
+                <button type="submit" class="btn btn-primary">guardar </button>
+            </div>
+        </form>
+    
+    </div>
+</div><!--la tarjeta-->
+<!--aquí codigo tarjeta-->
+    </div>
+</div>
+
+
+{% endblock  %}
