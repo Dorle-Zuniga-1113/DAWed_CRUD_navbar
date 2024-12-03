@@ -3,7 +3,8 @@ CRUD de varias app de cosmeticos en django python
 - ![image](https://github.com/user-attachments/assets/fc7d3c4f-dceb-495e-95db-40739ff1477e)
 - ![image](https://github.com/user-attachments/assets/7fd3dc48-69ea-44be-9287-c2b6bdef2889)
 - ![image](https://github.com/user-attachments/assets/1f9d9cfb-3989-451d-a8b2-9b34a5845c40)
-- ![image](https://github.com/user-attachments/assets/f9d85a94-af4d-4a46-99ec-3a02c2fc968c)
+- ![image](https://github.com/user-attachments/assets/4b358c9d-9c72-48ed-8442-15b9681c559a)
+
 - ![image](https://github.com/user-attachments/assets/06b1acd8-0f49-4cdf-ad93-889fd5fe63a6)
 - ![image](https://github.com/user-attachments/assets/233b5c86-f8a8-4628-ae9c-48fb0e8ce62f)
 - ![image](https://github.com/user-attachments/assets/df97133c-7121-4f50-88b7-dd968618c5b5)
