@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+
+{% block cuerpo %}
+{% load static %}
+<div class="row"><!-- la fila -->
+<div class="col-sm-12 col-md-4 col-lg-4 col-xl-4"><!-- columna izquierda -->
+
+<h1>registrar</h1>
+    <div class="card">
+        <div class="card-body">
+            <form action="registrarcatalogo/" method="POST">{% csrf_token %}  <!--falta accion-->
+                <div class="form-group">
+                    <input type="text" id="txtcod" name="txtcod" class="form-control" placeholder="codigo catalogo" minlenght="6" maxLenght="6" required>
+                </div>
+                <div class="form-group py-3">
+                    <input type="text" id="txtnombre" name="txtnombre"class="form-control" placeholder="nombre del catalogo"   maxLenght="100" required>
+                </div>
+                <div class="form-group py-3">
+                    <label for="numfechai">Fecha de inicio</label>
+                    <input type="date" id="numfechai" name="numfechai" class="form-control"  required>
+                </div>
+                <div class="form-group py-3">
+                    <label for="numfechaf">Fecha de fin</label>
+                    <input type="date" id="numfechaf" name="numfechaf" class="form-control"  required>
+                </div>
+                <div class="form-group py-3">
+                    <input type="text" id="numprom" name="numprom" class="form-control" placeholder="Promocion"   maxLenght="100" required>
+                </div>
+                <div class="form-group py-3">
+                    <input type="text" id="txtcole" name="txtcole" class="form-control" placeholder="coleccion"   maxLenght="100" required>
+                </div>
+                <div class="form-group py-3">
+                    <input type="text" id="txtnew" name="txtnew" class="form-control" placeholder="novedad"   maxLenght="100" required>
+                </div>
+                
+                
+                <div class="form-group py-2">
+                    <button type="submit" class="btn btn-primary">guardar</button>
+                </div>
+            </form>
+        
+        </div>
+    </div><!--la tarjeta-->
+
+</div><!-- columna izquierda --> 
+
+<div class="col-sm-12 col-md-8 col-lg-8 col-xl-8"><!--columna derecha-->
+    <h1> 
+        listado de catalogos
+    </h1>
+    <img class="w-50" src="{% static 'img/catalogo.jpg' %}" alt="gogo" weight="800" height="400">
+    <!--  la tabla   -->
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">codigo</th>
+                <th scope="col">nombre</th>
+                <th scope="col">fecha inicio</th>
+                <th scope="col">fecha fin</th>
+                <th scope="col">promocion</th>
+                <th scope="col">coleccion</th>
+                <th scope="col">novedades</th>
+                <th>opciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for l in loscata %}
+            <tr>
+                <td>
+                {{forloop.counter}}</td>
+                <td>{{l.id_catalogo}}  </td>
+                <td>{{l.nombre}}  </td>
+                <td>{{l.fecha_inicio|date:"d/m/Y"}}  </td>
+                <td>{{l.fecha_fin|date:"d/m/Y"}}  </td>
+                <td>{{l.promocion}}  </td>
+                <td>{{l.coleccion}}  </td>
+                <td>{{l.novedades}}  </td>
+                <td><a href="seleccionarcatalogo/{{l.id_catalogo}}" class="btn btn-info">editar</a></td><!--falta codigo-->
+                <td><a href="borrarcatalogo/{{l.id_catalogo}}" class="btn btn-danger">borrar</a></td>
+            </tr>
+            
+            {% endfor %}
+            </tbody>
+        </table>
+        <!--  la tabla   -->
+    <div><!--columna derecha-->
+    </div><!-- la fila -->
+{% endblock %}
